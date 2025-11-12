@@ -1,8 +1,11 @@
 import '../App.css';
 import { Box, Button, Card, Typography } from '@mui/material';
+import ResumeCard from "../components/ResumeCard"
 
 export default function ResumePage() {
   return (
-    <Typography variant="h5">Resume Page</Typography>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+        <ResumeCard />
+    </Box>
   );
 }

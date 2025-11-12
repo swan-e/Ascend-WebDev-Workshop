@@ -1,7 +1,7 @@
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 
-export default function ProjectCardBar({image, title, children, link}) {
+export default function ProjectCard({image, title, children, link}) {
     return (
         <Card sx={{ width: 345 }}>
             <CardMedia

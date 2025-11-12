@@ -3,7 +3,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 
 export default function ProjectCardBar({image, title, children, link}) {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ width: 345 }}>
             <CardMedia
                 sx={{ height: 140 }}
                 image={image}

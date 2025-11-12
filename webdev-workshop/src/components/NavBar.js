@@ -1,5 +1,6 @@
-import { AppBar, Box, Button, SvgIcon, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, IconButton, SvgIcon, Toolbar, Typography } from "@mui/material";
 import { ReactComponent as CustomSVG } from '../assets/icons/rocket.svg';
+import { Link, useLocation } from 'react-router-dom';
 
 function ProfileIcon(props) {
     return <SvgIcon component={CustomSVG} inheritViewBox {...props} />;
@@ -7,10 +8,12 @@ function ProfileIcon(props) {
 
 export default function NavBar({ name, activeSection, setActiveSection}) {
     const navItems = [
-        {id: "resume", label: "Resume"},
-        {id: "portfolio", label: "Portfolio"},
-        {id: "about", label: "About"},
+        {id: "resume", label: "Resume", path: "/resume"},
+        {id: "portfolio", label: "Portfolio", path: "/portfolio"},
+        {id: "about", label: "About", path: "/about"},
     ];
+
+    const location = useLocation();
 
     return (
         <AppBar position="static" color="transparent" elevation={0}>
@@ -23,30 +26,43 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
 
                 {/* LEFT SECTION */}
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                    <ProfileIcon fontSize="large" />
+                    <IconButton
+                        component={Link}
+                        to="/">
+                        <ProfileIcon fontSize="large" />
+                    </IconButton>
                     <Typography variant="h5" component="div">{name}</Typography>
                 </Box>
 
                 {/* MIDDLE SECTION */}
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center",}}>
-                    {navItems.map((item) => (
-                        <Button
-                        key={item.id}
-                        variant={activeSection === item.id ? "outlined" : "text"}
-                        //onClick={() => handleScroll(item.id)}
-                        // the sx allows for CSS styling 
-                        sx={{
-                            borderRadius: "20px",
-                            color: "purple",
-                            borderColor: "purple",
-                            "&:hover": {
-                            backgroundColor: "transparent",
-                            },
-                        }}
-                        >
-                        {item.label}
-                        </Button>
-                    ))}
+                    {navItems.map((item) => {
+                        const isActive = location.pathname === item.path;
+                        return (
+                            <Button
+                                key={item.id}
+                                component={Link}
+                                to={item.path}
+                                //variant={location.pathname === item.path ? "outlined" : "text"}
+                                //variant={isActive ? "outlined" : "text"}
+                                sx={{
+                                    borderRadius: "20px",
+                                    color: isActive ? "purple" : "grey",
+                                    borderColor: isActive ? "purple" : "transparent",
+                                    "&:hover": {
+                                        backgroundColor: "transparent",
+                                        color: "purple",
+                                    },
+                                }}
+                                >
+                                {item.label}
+                                </Button>
+                        )
+                    })}
+                    
+                        
+                        
+                        
                 </Box>
 
                 {/* RIGHT SECTION */}

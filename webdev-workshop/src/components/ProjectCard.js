@@ -1,24 +1,24 @@
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 
-export default function ProjectCardBar(props) {
+export default function ProjectCardBar({image, title, children, link}) {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
                 sx={{ height: 140 }}
-                image={props.image}
+                image={image}
                 title="project"
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {props.title}
+                    {title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    {props.text}
+                    {children}
                 </Typography>
             </CardContent>
             <CardActions>
-                <IconButton size="small" component="a" href={props.link}>
+                <IconButton size="small" component="a" href={link}>
                     <LanguageIcon />
                 </IconButton>
             </CardActions>

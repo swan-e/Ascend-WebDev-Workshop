@@ -1,12 +1,12 @@
 import '../../App.css';
-import { Box, Grid, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import placeholderImg from '../../assets/placeholder.jpg';
 import ProfileDetails from './ProfileDetails';
 
 export default function ProfilePage() {
   return (
 
-    <Stack marginTop={'5rem'} height={'100vh'} width={'100%'} direction={'row'} alignItems={'flex-start'} justifyContent={'center'}>
+    <Stack marginTop={'10rem'} height={'100vh'} width={'100%'} direction={'row'} alignItems={'flex-start'} justifyContent={'center'}>
         {/* Left Side */}
         <Box maxWidth={'50%'}>
           <ProfileDetails/>

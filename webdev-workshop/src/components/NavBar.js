@@ -1,6 +1,7 @@
 import { AppBar, Box, Button, IconButton, Stack, SvgIcon, Toolbar, Typography } from "@mui/material";
 import { ReactComponent as CustomSVG } from '../assets/icons/rocket.svg';
 import { Link, useLocation } from 'react-router-dom';
+import StarIcon from '@mui/icons-material/Star';
 
 function ProfileIcon(props) {
     return <SvgIcon component={CustomSVG} inheritViewBox {...props} />;
@@ -22,7 +23,8 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    marginTop: '10px'
+                    marginTop: '10px',
+                    height: '40px',
                 }}>
 
                 {/* LEFT SECTION */}
@@ -36,7 +38,7 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
                 </Stack>
 
                 {/* MIDDLE SECTION */}
-                <Stack direction={'row'} sx={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                <Stack direction={'row'} sx={{flex: 1, justifyContent: "center", alignItems: "flex-end", height:'90%'}}>
                     {navItems.map((item) => {
                         const isActive = location.pathname === item.path;
                         return (
@@ -66,12 +68,12 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
                 <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
                     <Button
                         key="contact"
+                        variant="contained"
                         sx={{
                             borderRadius: "20px",
-                            color: "white",
-                            borderColor: "purple",
-                            backgroundColor: "purple",
+                            textTransform: 'none',
                         }}
+                        startIcon={<StarIcon/>}
                         >
                         Contact Me
                     </Button>

@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, IconButton, SvgIcon, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, IconButton, Stack, SvgIcon, Toolbar, Typography } from "@mui/material";
 import { ReactComponent as CustomSVG } from '../assets/icons/rocket.svg';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -16,26 +16,27 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
     const location = useLocation();
 
     return (
-        <AppBar position="static" color="transparent" elevation={0}>
+        <AppBar position="static" color="transparent" elevation={0} >
             <Toolbar 
                 sx={{
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    marginTop: '10px'
                 }}>
 
                 {/* LEFT SECTION */}
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Stack direction="row" spacing={2} sx={{ flex: 1, justifyContent: 'flex-start', alignItems: "center"}}>
                     <IconButton
                         component={Link}
                         to="/">
                         <ProfileIcon fontSize="large" />
                     </IconButton>
-                    <Typography variant="h5" component="div">{name}</Typography>
-                </Box>
+                    <Typography variant="h4" component="div">{name}</Typography>
+                </Stack>
 
                 {/* MIDDLE SECTION */}
-                <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center",}}>
+                <Stack direction={'row'} sx={{flex: 1, justifyContent: "center", alignItems: "center"}}>
                     {navItems.map((item) => {
                         const isActive = location.pathname === item.path;
                         return (
@@ -59,14 +60,10 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
                                 </Button>
                         )
                     })}
-                    
-                        
-                        
-                        
-                </Box>
+                </Stack>
 
                 {/* RIGHT SECTION */}
-                <Box>
+                <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
                     <Button
                         key="contact"
                         sx={{

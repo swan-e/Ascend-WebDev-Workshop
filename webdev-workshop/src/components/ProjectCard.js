@@ -1,12 +1,21 @@
-import { Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, IconButton, Typography, useTheme } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 
 export default function ProjectCard({image, title, children, link}) {
+    const theme = useTheme();
     return (
-        <Card sx={{ width: 345, borderRadius: '20px' }}>
+        <Card sx={{ width: 540, borderRadius: '20px', bgcolor: 'background.secondary' }}>
             <CardMedia
-                sx={{ height: 140 }}
-                image={image}
+                sx={{ 
+                    minHeight: 280,
+                    marginTop: '8px',
+                    marginRight: '8px',
+                    marginLeft: '8px',
+                    borderRadius: '12px',
+                    backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0) 0%, ${theme.palette.background.secondary} 100%), url(${image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                }}
                 title="project"
             />
             <CardContent>

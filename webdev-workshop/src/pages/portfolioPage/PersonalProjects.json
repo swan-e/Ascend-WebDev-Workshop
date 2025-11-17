@@ -1,6 +1,12 @@
 [
     {
-        "image": "",
+        "image": "/PortfolioImages/Project1_image.png",
+        "name": "My First Project",
+        "description": "This is my first project",
+        "link": "https://www.youtube.com"
+    },
+    {
+        "image": "/PortfolioImages/Project1_image.png",
         "name": "My First Project",
         "description": "This is my first project",
         "link": "https://www.youtube.com"

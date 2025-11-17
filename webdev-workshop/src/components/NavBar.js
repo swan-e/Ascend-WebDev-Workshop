@@ -5,14 +5,14 @@ import ProfileIcon from '@mui/icons-material/Person';
 
 export default function NavBar({ name }) {
     const navItems = [
+        {id: "about", label: "About", path: "/about"},
         {id: "resume", label: "Resume", path: "/resume"},
         {id: "portfolio", label: "Portfolio", path: "/portfolio"},
-        {id: "about", label: "About", path: "/about"},
     ];
 
     const location = useLocation();
 
-    const linkedInProfileURL = 'https://linkedin.com/in/patrick-vyn-badiang';
+    const linkedInProfileURL = 'https://linkedin.com/';
 
     return (
         <AppBar position="static" color="transparent" elevation={0} >
@@ -30,7 +30,7 @@ export default function NavBar({ name }) {
                     <Avatar sx={{width: 56, height: 56, bgcolor: 'background.main'}}>
                         <ProfileIcon fontSize="large"/>
                     </Avatar>
-                    <Typography variant="h4" sx={{ color: 'primary.main'}}>{name}</Typography>
+                    <Typography variant="h5" sx={{ color: 'primary.main'}}>{name}</Typography>
                 </Stack>
 
                 {/* MIDDLE SECTION */}
@@ -42,8 +42,6 @@ export default function NavBar({ name }) {
                                 key={item.id}
                                 component={Link}
                                 to={item.path}
-                                //variant={location.pathname === item.path ? "outlined" : "text"}
-                                //variant={isActive ? "outlined" : "text"}
                                 sx={{
                                     borderRadius: "20px",
                                     color: isActive ? "purple" : "grey",

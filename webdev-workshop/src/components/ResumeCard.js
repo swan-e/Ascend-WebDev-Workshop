@@ -1,4 +1,5 @@
-import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
 
 export default function ResumeCard({ resumePdf }) {
 
@@ -6,16 +7,36 @@ export default function ResumeCard({ resumePdf }) {
         <Card sx={{ overflowY: 'auto'}}>
             {resumePdf ? (
                 <>
-                    <CardMedia component="img" image={resumePdf} alt="Resume preview" sx={{ width: "100%"}} />
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        href={resumePdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Box sx={{ position: 'relative', }}>
+                        <Box component="embed" src={`${resumePdf}#zoom=78&toolbar=0`} type="application/pdf" sx={{ width: '110vh', height: '90vh', borderRadius: '8px',}}/>
+                        {/* <Button
+                            variant="contained"
+                            color="primary"
+                            href={resumePdf}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >
+                            Download Resume
+                        </Button> */}
+                        <IconButton
+                            href={resumePdf}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{
+                                position: 'absolute',
+                                bottom: 16,
+                                right: 16,
+                                backgroundColor: 'white',
+                                boxShadow: 2,
+                                '&:hover': {
+                                    backgroundColor: '#f0f0f0',
+                                },
+                            }}
                         >
-                        Download Resume
-                    </Button>
+                            <DownloadIcon />
+                        </IconButton>
+                    </Box>
+                    
                 </>
             ) : (
                 <CardContent>

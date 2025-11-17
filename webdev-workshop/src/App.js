@@ -1,10 +1,9 @@
   import { BrowserRouter, Route, Routes } from 'react-router-dom';
   import './App.css';
   import Layout from "./pages/Layout.js";
-  import ProfilePage from "./pages/profilePage/ProfilePage.js";
+  import ProfilePage from "./pages/ProfilePage.js";
   import ResumePage from "./pages/ResumePage.js";
   import PortfolioPage from "./pages/portfolioPage/PortfolioPage.js";
-  import AboutPage from "./pages/AboutPage.js";
   import { ThemeProvider } from '@mui/material/styles';
   import { CssBaseline, Box } from '@mui/material';
   import theme from './theme.js';
@@ -19,9 +18,9 @@
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<ProfilePage />} />
+                <Route path="/about" element={<ProfilePage />} />
                 <Route path="/resume" element={<ResumePage />} />
                 <Route path="/portfolio" element={<PortfolioPage />} />
-                <Route path="/about" element={<ProfilePage />} />
               </Route>
             </Routes>
           </Box>

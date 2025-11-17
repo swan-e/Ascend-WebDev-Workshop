@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar.js';
 export default function Layout() {
   return (
     <>
-      <NavBar name="Patrick Vyn Badiang"/>
+      <NavBar name="Name"/>
       {/* Outlet is where child routes get rendered */}
       <Outlet />
     </>

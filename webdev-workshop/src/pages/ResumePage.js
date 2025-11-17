@@ -4,7 +4,7 @@ import ResumeCard from "../components/ResumeCard"
 
 export default function ResumePage() {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', paddingTop: '2rem', alignItems: 'center', justifyContent: 'center'}}>
         {/**
          * Please add in your resume pdf file in the public folder
          * and pass the path to the resumePdf prop

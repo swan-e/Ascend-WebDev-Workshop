@@ -9,14 +9,21 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: 'clamp(2rem, 4vw, 5rem)',
-      fontWeight: 700,
+      fontSize: 'clamp(3rem, 6vw, 9rem)',
     },
     h2: {
-      fontSize: 'clamp(1rem, 3vw, 4rem)',
-      fontWeight: 700,
+      fontSize: 'clamp(2rem, 4vw, 6rem)',
     },
     h3: {
+      fontSize: 'clamp(0.5rem, 2.5vw, 3.5rem)',
+    },
+    h4: {
+      fontSize: 'clamp(2rem, 4vw, 5rem)',
+    },
+    h5: {
+      fontSize: 'clamp(1rem, 3vw, 4rem)',
+    },
+    h6: {
       fontSize: 'clamp(0.5rem, 2.5vw, 3.5rem)',
     },
     p: {

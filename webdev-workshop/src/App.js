@@ -3,7 +3,7 @@
   import Layout from "./pages/Layout.js";
   import ProfilePage from "./pages/profilePage/ProfilePage.js";
   import ResumePage from "./pages/ResumePage.js";
-  import PortfolioPage from "./pages/PortfolioPage.js";
+  import PortfolioPage from "./pages/portfolioPage/PortfolioPage.js";
   import AboutPage from "./pages/AboutPage.js";
   import { ThemeProvider } from '@mui/material/styles';
   import { CssBaseline, Box } from '@mui/material';

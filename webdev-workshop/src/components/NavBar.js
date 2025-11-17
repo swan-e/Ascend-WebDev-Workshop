@@ -1,13 +1,9 @@
-import { AppBar, Box, Button, IconButton, Stack, SvgIcon, Toolbar, Typography } from "@mui/material";
-import { ReactComponent as CustomSVG } from '../assets/icons/rocket.svg';
+import { AppBar, Avatar, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
 import { Link, useLocation } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
+import ProfileIcon from '@mui/icons-material/Person';
 
-function ProfileIcon(props) {
-    return <SvgIcon component={CustomSVG} inheritViewBox {...props} />;
-}
-
-export default function NavBar({ name, activeSection, setActiveSection}) {
+export default function NavBar({ name }) {
     const navItems = [
         {id: "resume", label: "Resume", path: "/resume"},
         {id: "portfolio", label: "Portfolio", path: "/portfolio"},
@@ -15,6 +11,8 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
     ];
 
     const location = useLocation();
+
+    const linkedInProfileURL = 'https://linkedin.com/in/patrick-vyn-badiang';
 
     return (
         <AppBar position="static" color="transparent" elevation={0} >
@@ -29,12 +27,10 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
 
                 {/* LEFT SECTION */}
                 <Stack direction="row" spacing={2} sx={{ flex: 1, justifyContent: 'flex-start', alignItems: "center"}}>
-                    <IconButton
-                        component={Link}
-                        to="/">
-                        <ProfileIcon fontSize="large" />
-                    </IconButton>
-                    <Typography variant="h4" component="div">{name}</Typography>
+                    <Avatar sx={{width: 56, height: 56, bgcolor: 'background.main'}}>
+                        <ProfileIcon fontSize="large"/>
+                    </Avatar>
+                    <Typography variant="h4" sx={{ color: 'primary.main'}}>{name}</Typography>
                 </Stack>
 
                 {/* MIDDLE SECTION */}
@@ -74,6 +70,7 @@ export default function NavBar({ name, activeSection, setActiveSection}) {
                             textTransform: 'none',
                         }}
                         startIcon={<StarIcon/>}
+                        onClick={() => window.open(linkedInProfileURL, '_blank')}
                         >
                         Contact Me
                     </Button>

@@ -1,5 +1,5 @@
 import '../App.css';
-import { Box, Button, Card, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 export default function AboutPage() {
   return (

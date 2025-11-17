@@ -6,6 +6,7 @@
   import PortfolioPage from "./pages/PortfolioPage.js";
   import AboutPage from "./pages/AboutPage.js";
   import { ThemeProvider } from '@mui/material/styles';
+  import { CssBaseline, Box } from '@mui/material';
   import theme from './theme.js';
 
 
@@ -13,14 +14,17 @@
     return (
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<ProfilePage />} />
-              <Route path="/resume" element={<ResumePage />} />
-              <Route path="/portfolio" element={<PortfolioPage />} />
-              <Route path="/about" element={<AboutPage />} />
-            </Route>
-          </Routes>
+          <CssBaseline />
+          <Box sx={{ backgroundColor: '#FEF7FF', minHeight: '100vh' }}>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path="/" element={<ProfilePage />} />
+                <Route path="/resume" element={<ResumePage />} />
+                <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route path="/about" element={<ProfilePage />} />
+              </Route>
+            </Routes>
+          </Box>
         </ThemeProvider>
       </BrowserRouter>
     );

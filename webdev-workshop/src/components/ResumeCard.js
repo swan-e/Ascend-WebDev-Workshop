@@ -1,19 +1,29 @@
-import { Button, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
-import resumePreview from '../assets/resume.jpg';
+import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
 
-export default function ResumeCard() {
+export default function ResumeCard({ resumePdf }) {
+
     return (
         <Card sx={{ overflowY: 'auto'}}>
-            <CardMedia component="img" image={resumePreview} alt="Resume preview" sx={{ width: "100%"}} />
-            <Button
-                variant="contained"
-                color="primary"
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Download Resume
-            </Button>
+            {resumePdf ? (
+                <>
+                    <CardMedia component="img" image={resumePdf} alt="Resume preview" sx={{ width: "100%"}} />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        href={resumePdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        Download Resume
+                    </Button>
+                </>
+            ) : (
+                <CardContent>
+                    <Typography variant="h6" align="center">
+                        Please Provide resume PDF
+                    </Typography>
+                </CardContent>
+            )}
         </Card>
     );
 }

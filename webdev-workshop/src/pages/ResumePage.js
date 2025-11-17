@@ -1,11 +1,21 @@
 import '../App.css';
-import { Box, Button, Card, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import ResumeCard from "../components/ResumeCard"
 
 export default function ResumePage() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-        <ResumeCard />
+        {/**
+         * Please add in your resume pdf file in the public folder
+         * and pass the path to the resumePdf prop
+         * 
+         * For example, if your resume pdf is 'resume.pdf' then input
+         * <ResumeCard resumePdf="/resume.pdf" />
+         * 
+         * If it's MYRESUME_2025.pdf then put
+         * <ResumeCard resumePdf="/MYRESUME_2025.pdf" /> instead
+         */}
+        <ResumeCard resumePdf="/resume.pdf" />
     </Box>
   );
 }

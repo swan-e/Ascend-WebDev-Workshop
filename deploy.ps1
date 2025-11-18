@@ -1,7 +1,7 @@
 # deploy.ps1
 
-$GITHUB_USERNAME = "username"
-$REPO_NAME = "repo-name"
+$GITHUB_USERNAME = "swan-e"
+$REPO_NAME = "portfolio"
 $packagePath = "package.json"
 $repoURL = "https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
 $homepageURL = "https://$GITHUB_USERNAME.github.io/$REPO_NAME"

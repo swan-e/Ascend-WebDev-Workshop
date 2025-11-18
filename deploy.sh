@@ -5,7 +5,6 @@ set -e
 # Replace these with your info
 GITHUB_USERNAME="your-github-username"
 REPO_NAME="your-repo-name"
-REPO_URL="https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
 
 
 if command -v jq >/dev/null 2>&1; then
@@ -43,13 +42,6 @@ npm install
 if ! npm list --depth=0 | grep -q "gh-pages"; then
     echo "Installing gh-pages..."
     npm install --save-dev gh-pages
-fi
-
-# Check if .git exists
-if [ ! -d ".git" ]; then
-    echo "Initializing git repository..."
-    git init
-    git remote add origin "$REPO_URL"
 fi
 
 # Build the project

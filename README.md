@@ -8,25 +8,41 @@
    Edit <github-username> and <repo-name> in:
    - deploy.ps1 (FOR WINDOWS )
    - deploy.sh (FOR MAC/LINUX)
-5. Run:
+5. Run dev:
+     IF ON WINDOWS:
+     1. Unblock-File .\dev.ps1
+     2. Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+     3. .\dev.ps1
+
+     IF ON LINUX/MACOS:
+     1. chmod +x dev.sh
+     2. ./dev.sh
+6. Run deploy:
      IF ON WINDOWS:
      1. Unblock-File .\deploy.ps1
      2. Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
      3. .\deploy.ps1
 
      IF ON LINUX/MACOS:
-     1. chmod +x bash.sh
+     1. chmod +x deploy.sh
      2. ./deploy.sh
-6. After 5 is done, Run:
+7. After 6 is done, Run gitadd:
     IF ON WINDOWS:
     1. Unblock-File .\gitadd.ps1
     2. .\gitadd.ps1 (ON WINDOWS)
 
     IF ON LINUX/MACOS:
-    1. ./gitadd.sh (ON LINUX/MACOS)
+    1. chmod +x gitadd.sh
+    2. ./gitadd.sh (ON LINUX/MACOS)
    Then Run Step 5. commands again (deploys)
-7. Open up https://<your-github-username>.github.io/<your-repo-name>/ in your browser
-8. Run step 6 and then 5 again if you make changes to website
+8. Run deploy:
+     IF ON WINDOWS:
+     1. .\deploy.ps1
+
+     IF ON LINUX/MACOS:
+     1. ./deploy.sh
+9. Open up https://<your-github-username>.github.io/<your-repo-name>/ in your browser
+10. Run step 7 and then 8 again if you make changes to website
 
 
 TROUBLESHOOTING
@@ -43,3 +59,11 @@ Run these commands to fix:
 - DELETE <NODE_MODULES> AND <BUILD> FOLDERS
 - REPEAT FROM STEP 4
 - git remote -v (check that you added the right one)
+
+2. If you are getting
+
+remote: Internal Server Error
+fatal: unable to access 'https://github.com/swan-e/portfolio.git/': The requested URL returned error: 500
+
+Run these commands to fix:
+- (FOR WINDOWS) Remove-Item -Recurse -Force "node_modules\.cache\gh-pages" -ErrorAction SilentlyContinue 

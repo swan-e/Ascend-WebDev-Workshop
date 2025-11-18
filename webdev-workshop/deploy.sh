@@ -3,9 +3,13 @@
 set -e
 
 # Replace these with your info
-GITHUB_USERNAME="YOURUSERNAME"
-PROJECT_NAME="PROJECTNAME"
-REPO_URL="https://github.com/$GITHUB_USERNAME/$PROJECT_NAME.git"
+GITHUB_USERNAME="your-github-username"
+REPO_NAME="your-repo-name"
+REPO_URL="https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
+
+# Update package.json
+echo "Updating homepage field in package.json..."
+sed -i 's|"homepage"[[:space:]]*:[[:space:]]*"[^"]*"|"homepage": "https://'"$GITHUB_USERNAME"'.github.io/'"$REPO_NAME"'"|' package.json
 
 # Function to check if a command exists
 command_exists() {
@@ -44,12 +48,8 @@ if [ ! -d ".git" ]; then
 fi
 
 # Build the project
-if [ ! -d "build" ]; then
-    echo "Build folder not found. Building project..."
-    npm run build
-else
-    echo "Build folder exists. Skipping build..."
-fi
+echo "Building project..."
+npm run build
 
 # Deploy the project
 echo "Deploying to GitHub Pages..."

@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
 import ProfileIcon from '@mui/icons-material/Person';
 
-export default function NavBar({ name }) {
+export default function NavBar({ name, linkedInProfileURL }) {
     const navItems = [
         {id: "about", label: "About", path: "/about"},
         {id: "resume", label: "Resume", path: "/resume"},
@@ -11,8 +11,6 @@ export default function NavBar({ name }) {
     ];
 
     const location = useLocation();
-
-    const linkedInProfileURL = 'https://linkedin.com/';
 
     return (
         <AppBar position="static" color="transparent" elevation={0} >
@@ -68,7 +66,7 @@ export default function NavBar({ name }) {
                             textTransform: 'none',
                         }}
                         startIcon={<StarIcon/>}
-                        onClick={() => window.open(linkedInProfileURL, '_blank')}
+                        onClick={() => window.open({linkedInProfileURL}, '_blank')}
                         >
                         Contact Me
                     </Button>

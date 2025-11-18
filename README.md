@@ -1,6 +1,6 @@
 # Quick Start for this React App
 
-1. Open VS Code and open this folder.
+1. Open VSCode and open this folder.
 2. Open a terminal in VS Code.
 3. Run:
    npm install
@@ -11,11 +11,7 @@
    git remote add origin https://github.com/YOURUSERNAME/PROJECTNAME.git
 5. To deploy to GitHub Pages:
    npm install --save-dev gh-pages
-   Add the following to package.json:
+   Edit the following in package.json:
      "homepage": "https://YOURUSERNAME.github.io/PROJECTNAME",
-     "scripts": {
-       "predeploy": "npm run build",
-       "deploy": "gh-pages -d build"
-     }
    Then run:
      npm run deploy

@@ -12,7 +12,7 @@ export default function ProjectCard({image, title, children, link}) {
                     marginRight: '8px',
                     marginLeft: '8px',
                     borderRadius: '12px',
-                    backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0) 0%, ${theme.palette.background.secondary} 100%), url(${image})`,
+                    backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0) 0%, ${theme.palette.background.secondary} 100%), url(${process.env.PUBLIC_URL}/${image})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                 }}

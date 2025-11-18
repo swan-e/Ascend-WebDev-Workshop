@@ -44,8 +44,12 @@ if [ ! -d ".git" ]; then
 fi
 
 # Build the project
-echo "Building the project..."
-npm run build
+if [ ! -d "build" ]; then
+    echo "Build folder not found. Building project..."
+    npm run build
+else
+    echo "Build folder exists. Skipping build..."
+fi
 
 # Deploy the project
 echo "Deploying to GitHub Pages..."

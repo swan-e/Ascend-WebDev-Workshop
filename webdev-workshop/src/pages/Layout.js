@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar.js';
 export default function Layout() {
   return (
     <>
-      <NavBar name="Name"/>
+      <NavBar name="Name" linkedInProfileURL= "https://linkedin.com/"/>
       {/* Outlet is where child routes get rendered */}
       <Outlet />
     </>

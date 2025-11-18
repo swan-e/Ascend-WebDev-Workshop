@@ -1,4 +1,4 @@
-  import { BrowserRouter, Route, Routes } from 'react-router-dom';
+  import { HashRouter, Route, Routes } from 'react-router-dom';
   import './App.css';
   import Layout from "./pages/Layout.js";
   import ProfilePage from "./pages/ProfilePage.js";
@@ -11,7 +11,7 @@
 
   function App() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box sx={{ backgroundColor: '#FEF7FF', minHeight: '100vh' }}>
@@ -25,7 +25,7 @@
             </Routes>
           </Box>
         </ThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 

@@ -8,27 +8,51 @@ Write-Host "Setting homepage to empty string in package.json..."
 Write-Host "Homepage cleared for local development" -ForegroundColor Green
 Write-Host "Checking Node.js installation..."
 
-Write-Host "Installing npm dependencies..."
-npm install
 
-if (-not (Get-ChildItem node_modules -Recurse | Where-Object { $_.Name -eq "gh-pages" })) {
-    Write-Host "Installing gh-pages..."
-    npm install --save-dev gh-pages
+# Try to find node on the system
+$node = Get-Command node -ErrorAction SilentlyContinue
+if (-not $node) {
+    Write-Warning "Node.js is NOT installed. Please download from https://nodejs.org/"
 } else {
-    Write-Host "gh-pages already installed."
+    Write-Host "Node.js found at: $($node.Source)"
+    $nodeDir = Split-Path $node.Source
+
+    if (-not ($env:Path -like "*$nodeDir*")) {
+        Write-Host "Adding Node.js to PATH..."
+        [Environment]::SetEnvironmentVariable(
+            "Path",
+            $env:Path + ";$nodeDir",
+            [EnvironmentVariableTarget]::User
+        )
+    } else {
+        Write-Host "Node.js already in PATH"
+    }
+
+    node -v
 }
 
-if (-not (Test-Path ".git")) {
-    Write-Host "Initializing git repository..."
-    git init
-}
+Write-Host "`nChecking Git installation..." -ForegroundColor Cyan
 
-$existingRemote = git remote
-if (-not ($existingRemote -contains "origin")) {
-    Write-Host "Adding remote origin..."
-    git remote add origin $remoteRepo
+# Try to find git on the system
+$git = Get-Command git -ErrorAction SilentlyContinue
+if (-not $git) {
+    Write-Warning "Git is NOT installed. Please download from https://git-scm.com/"
 } else {
-    Write-Host "Remote origin already set."
+    Write-Host "Git found at: $($git.Source)"
+    $gitDir = Split-Path $git.Source
+
+    if (-not ($env:Path -like "*$gitDir*")) {
+        Write-Host "Adding Git to PATH..."
+        [Environment]::SetEnvironmentVariable(
+            "Path",
+            $env:Path + ";$gitDir",
+            [EnvironmentVariableTarget]::User
+        )
+    } else {
+        Write-Host "Git already in PATH"
+    }
+
+    git -v
 }
 
 $node = Get-Command node -ErrorAction SilentlyContinue

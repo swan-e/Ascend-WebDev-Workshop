@@ -12,6 +12,9 @@ export default function ResumePage() {
          * For example, if your resume pdf is 'resume.pdf' then input
          * <ResumeCard resumePdf="/resume.pdf" />
          * 
+         * instead of 
+         * <ResumeCard />
+         * 
          * If it's MYRESUME_2025.pdf then put
          * <ResumeCard resumePdf="/MYRESUME_2025.pdf" /> instead
          */}

@@ -1,7 +1,7 @@
 # deploy.ps1
 
-$GITHUB_USERNAME = "your-github-username"
-$REPO_NAME = "your-repo-name"
+$GITHUB_USERNAME = "swan-e"
+$REPO_NAME = "portfoliowebsite"
 $packagePath = "package.json"
 $repoURL = "https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
 $homepageURL = "https://$GITHUB_USERNAME.github.io/$REPO_NAME"
@@ -12,6 +12,51 @@ Write-Host "Updating homepage field in package.json..."
 Write-Host "package.json homepage updated successfully to $homepageURL"
 Write-Host "`nVerifying update..."
 
+Write-Host "Checking Node.js installation..."
+
+# Try to find node on the system
+$node = Get-Command node -ErrorAction SilentlyContinue
+if (-not $node) {
+    Write-Warning "Node.js is NOT installed. Please download from https://nodejs.org/"
+} else {
+    Write-Host "Node.js found at: $($node.Source)"
+    $nodeDir = Split-Path $node.Source
+
+    # Add to PATH only if missing
+    if (-not ($env:Path -like "*$nodeDir*")) {
+        Write-Host "Adding Node.js to PATH..."
+        [Environment]::SetEnvironmentVariable("Path",
+          $env:Path + ";$nodeDir",
+          [EnvironmentVariableTarget]::User)
+    } else {
+        Write-Host "Node.js already in PATH"
+    }
+
+    node -v
+}
+
+Write-Host "`nChecking Git installation..."
+# Try to find git
+$git = Get-Command git -ErrorAction SilentlyContinue
+
+if (-not $git) {
+    Write-Warning "Git is NOT installed. Please download from https://git-scm.com/"
+} else {
+    Write-Host "Git found at: $($git.Source)"
+    $gitDir = Split-Path $git.Source
+
+    # Add to PATH only if missing
+    if (-not ($env:Path -like "*$gitDir*")) {
+        Write-Host "Adding Git to PATH..."
+        [Environment]::SetEnvironmentVariable("Path",
+          $env:Path + ";$gitDir",
+          [EnvironmentVariableTarget]::User)
+    } else {
+        Write-Host "Git already in PATH"
+    }
+
+    git -v
+}
 
 Write-Host "Installing npm dependencies..."
 npm install

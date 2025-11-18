@@ -12,4 +12,4 @@ git commit -m "Autocommit"
 echo "Pushing to master..."
 git push origin master
 
-echo "Done! Now run: ./bash.sh"
+echo "Done! Now run: ./deploy.sh"

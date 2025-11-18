@@ -7,19 +7,15 @@
    Edit <github-username> and <repo-name> in:
    - deploy.ps1 (FOR WINDOWS )
    - deploy.sh (FOR MAC/LINUX)
-5. Type "cd webdev-workshop"
-   Then run:
+5. Run:
      IF ON WINDOWS:
      1. Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
-     2. Change deploy parameters
-     3. .\deploy.ps1
+     2. .\deploy.ps1
 
      IF ON LINUX/MACOS:
-     4. chmod +x bash.sh
-     5. Change deploy parameters
-     6. ./deploy.sh
-6. Any changes you make:
-   Run:
+     1. chmod +x bash.sh
+     2. ./deploy.sh
+6. Run:
     .\gitadd.ps1 (ON WINDOWS)
     ./gitadd.sh (ON LINUX/MACOS)
    Then Run Step 5. commands again (deploys)

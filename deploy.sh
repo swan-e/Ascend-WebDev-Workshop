@@ -7,9 +7,14 @@ GITHUB_USERNAME="your-github-username"
 REPO_NAME="your-repo-name"
 REPO_URL="https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
 
-# Update package.json
-echo "Updating homepage field in package.json..."
-sed -i 's|"homepage"[[:space:]]*:[[:space:]]*"[^"]*"|"homepage": "https://'"$GITHUB_USERNAME"'.github.io/'"$REPO_NAME"'"|' package.json
+
+if command -v jq >/dev/null 2>&1; then
+    echo "Adding homepage for deployment..."
+    jq --arg url "$GITHUB_USERNAME.github.io/$REPO_NAME" '.homepage = ("https://" + $url)' \
+        package.json > package.tmp.json && mv package.tmp.json package.json
+else
+    sed -i 's|"homepage": *".*"|"homepage": "https://'"$GITHUB_USERNAME"'.github.io/'"$REPO_NAME"'"|' package.json
+fi
 
 # Function to check if a command exists
 command_exists() {

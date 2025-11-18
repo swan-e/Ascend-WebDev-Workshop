@@ -9,7 +9,7 @@ export default function PortfolioPage() {
         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2, pt: 3 }}>
             {PersonalProjects.map((project, index) => (
                 <ProjectCard key={index} 
-                    image={project.image}
+                    image={process.env.PUBLIC_URL + project.image}
                     title={project.name} 
                     children={project.description} 
                     link={project.link}/>

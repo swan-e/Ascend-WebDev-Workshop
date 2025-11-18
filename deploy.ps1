@@ -8,58 +8,15 @@ $homepageURL = "https://$GITHUB_USERNAME.github.io/$REPO_NAME"
 
 # Update homepage in package.json
 Write-Host "Updating homepage field in package.json..."
-(Get-Content $packagePath) -replace '("homepage"\s*:\s*")[^"]*', "`${1}$homepageURL" | Set-Content $packagePath
+(Get-Content $packagePath) -replace '("homepage"\s*:\s*")[^"]*', "`$1$homepageURL" | Set-Content $packagePath
 Write-Host "package.json homepage updated successfully to $homepageURL"
-Write-Host "`nVerifying update..."
 
-Write-Host "Checking Node.js installation..."
-
-# Try to find node on the system
-$node = Get-Command node -ErrorAction SilentlyContinue
-if (-not $node) {
-    Write-Warning "Node.js is NOT installed. Please download from https://nodejs.org/"
-} else {
-    Write-Host "Node.js found at: $($node.Source)"
-    $nodeDir = Split-Path $node.Source
-
-    # Add to PATH only if missing
-    if (-not ($env:Path -like "*$nodeDir*")) {
-        Write-Host "Adding Node.js to PATH..."
-        [Environment]::SetEnvironmentVariable("Path",
-          $env:Path + ";$nodeDir",
-          [EnvironmentVariableTarget]::User)
-    } else {
-        Write-Host "Node.js already in PATH"
-    }
-
-    node -v
+# Verify the change
+Write-Host "Verifying update..."
+$verifyText = Get-Content $packagePath -Raw
+if ($verifyText -match '"homepage"\s*:\s*"([^"]*)"') {
+    Write-Host "Current homepage value: $($Matches[1])" -ForegroundColor Cyan
 }
-
-Write-Host "`nChecking Git installation..."
-# Try to find git
-$git = Get-Command git -ErrorAction SilentlyContinue
-
-if (-not $git) {
-    Write-Warning "Git is NOT installed. Please download from https://git-scm.com/"
-} else {
-    Write-Host "Git found at: $($git.Source)"
-    $gitDir = Split-Path $git.Source
-
-    # Add to PATH only if missing
-    if (-not ($env:Path -like "*$gitDir*")) {
-        Write-Host "Adding Git to PATH..."
-        [Environment]::SetEnvironmentVariable("Path",
-          $env:Path + ";$gitDir",
-          [EnvironmentVariableTarget]::User)
-    } else {
-        Write-Host "Git already in PATH"
-    }
-
-    git -v
-}
-
-Write-Host "Installing npm dependencies..."
-npm install
 
 # Install gh-pages if missing
 if (-not (Test-Path "node_modules\gh-pages")) {
@@ -76,7 +33,8 @@ if (-not (Test-Path ".git")) {
 }
 
 # Ensure origin remote is set
-if (-not (git remote | Select-String "origin")) {
+$remotes = git remote 2>$null
+if ($remotes -notcontains "origin") {
     Write-Host "Adding remote origin..."
     git remote add origin $repoURL
 } else {
@@ -86,7 +44,17 @@ if (-not (git remote | Select-String "origin")) {
 Write-Host "Building project..."
 npm run build
 
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Build failed!" -ForegroundColor Red
+    exit 1
+}
+
 Write-Host "Deploying to GitHub Pages..."
 npm run deploy
 
-Write-Host "Deployment complete!"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Deployment failed!" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "Deployment complete!" -ForegroundColor Green

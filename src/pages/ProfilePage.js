@@ -4,7 +4,7 @@ import placeholderImg from '../assets/placeholder.jpg';
 
 export default function ProfilePage() {
   return (
-    <Stack paddingTop={'5rem'} paddingBottom={'3rem'} width={'100%'} direction={'row'} spacing={2} alignItems={'flex-start'} justifyContent={'center'}>
+    <Stack paddingTop={'5rem'} paddingBottom={'3rem'} width={'100%'} spacing={2} alignItems={{ xs: 'center', sm: 'flex-start' }} justifyContent={'center'} direction={{ xs: 'column', sm: 'row' }}>
         {/**
          * Left Side Box
          * 

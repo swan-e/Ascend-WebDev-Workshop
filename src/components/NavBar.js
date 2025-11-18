@@ -28,7 +28,7 @@ export default function NavBar({ name, linkedInProfileURL }) {
                     <Avatar sx={{width: 56, height: 56, bgcolor: 'background.main'}}>
                         <ProfileIcon fontSize="large"/>
                     </Avatar>
-                    <Typography variant="h5" sx={{ color: 'primary.main'}}>{name}</Typography>
+                    <Typography sx={{ color: 'primary.main', typography: { xs: 'h6', sm: 'h5' }}}>{name}</Typography>
                 </Stack>
 
                 {/* MIDDLE SECTION */}

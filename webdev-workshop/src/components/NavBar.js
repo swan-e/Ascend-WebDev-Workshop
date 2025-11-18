@@ -66,7 +66,7 @@ export default function NavBar({ name, linkedInProfileURL }) {
                             textTransform: 'none',
                         }}
                         startIcon={<StarIcon/>}
-                        onClick={() => window.open({linkedInProfileURL}, '_blank')}
+                        onClick={() => window.open(linkedInProfileURL, '_blank')}
                         >
                         Contact Me
                     </Button>

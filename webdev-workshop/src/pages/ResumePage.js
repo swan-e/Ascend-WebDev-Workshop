@@ -15,7 +15,7 @@ export default function ResumePage() {
          * If it's MYRESUME_2025.pdf then put
          * <ResumeCard resumePdf="/MYRESUME_2025.pdf" /> instead
          */}
-        <ResumeCard resumePdf="/resume.pdf" />
+        <ResumeCard />
     </Box>
   );
 }

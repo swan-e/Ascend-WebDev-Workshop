@@ -1,12 +1,9 @@
 # Initialize git
 
-$repoURL = "https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
-
 # Check if .git exists
 if (-not (Test-Path ".git")) {
-    Write-Host "Initializing git repository..."
-    git init
-    git remote add origin $repoURL
+    Write-Host "Git not properly initialzed. Exiting..." -ForegroundColor Red
+    exit 1 
 }
 
 Write-Output "Staging all changes..."

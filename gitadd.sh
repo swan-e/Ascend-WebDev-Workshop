@@ -3,13 +3,10 @@
 # Stop on error
 set -e
 
-REPO_URL="https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
-
 # Check if .git exists
 if [ ! -d ".git" ]; then
-    echo "Initializing git repository..."
-    git init
-    git remote add origin "$REPO_URL"
+    echo "Git not properly initialzed. Exiting..."
+    exit 1
 fi
 
 echo "Staging all changes..."

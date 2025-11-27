@@ -3,9 +3,21 @@
 set -e
 
 # Replace these with your info
-GITHUB_USERNAME="your-github-username"
-REPO_NAME="your-repo-name"
+GITHUB_USERNAME="$1"
+REPO_NAME="$2"
 
+if [ -z "$GITHUB_USERNAME" ]; then
+    echo -e "\e[31mError: GITHUB_USERNAME is required\e[0m" >&2
+    exit 1
+fi
+
+if [ -z "$REPO_NAME" ]; then
+    echo -e "\e[31mError: REPO_USERNAME is required\e[0m" >&2
+    exit 1
+fi
+
+echo "GitHub Username: $GITHUB_USERNAME"
+echo "Repository Name: $REPO_NAME"
 
 if command -v jq >/dev/null 2>&1; then
     echo "Adding homepage for deployment..."

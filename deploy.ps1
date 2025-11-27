@@ -1,10 +1,18 @@
 # deploy.ps1
 
-$GITHUB_USERNAME = "swan-e"
-$REPO_NAME = "portfolio"
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$GITHUB_USERNAME,
+    [string]$REPO_NAME
+)
+
+# LOCAL VARS
 $packagePath = "package.json"
 $repoURL = "https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
 $homepageURL = "https://$GITHUB_USERNAME.github.io/$REPO_NAME"
+
+Write-Host "Github Username: $GITHUB_USERNAME"
+Write-Host "Repository Name: $REPO_NAME"
 
 # Update homepage in package.json
 Write-Host "Updating homepage field in package.json..."

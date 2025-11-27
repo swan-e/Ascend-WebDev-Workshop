@@ -5,14 +5,14 @@ Follow these steps to set up, run, and deploy your website!
 
 ## 1. Open the Project
 
-a. Open **VSCode** and drag in the downloaded folder.
-b. Open a **terminal** in VSCode.
+a. Open **VSCode** and drag in the downloaded folder.  
+b. Open a **terminal** in VSCode.  
 
 ## 2. Install Dependencies
 
-Make sure you have **git** and **Node.js** installed on your system.
-a. https://git-scm.com/install/
-b. https://nodejs.org/en/download
+Make sure you have **git** and **Node.js** installed on your system.  
+a. https://git-scm.com/install/  
+b. https://nodejs.org/en/download  
 
 ## 3. Run the Development Server
 

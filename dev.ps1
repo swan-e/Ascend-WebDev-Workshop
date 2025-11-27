@@ -85,5 +85,5 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host ""
-Write-Host "Starting development server (npm start)..."
+Write-Host "Starting development server (npm start)..." -ForegroundColor Green
 npm start

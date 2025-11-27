@@ -16,6 +16,6 @@ echo "Committing..."
 git commit -m "Autocommit"
 
 echo "Pushing to main..."
-git push -u origin main
+git push origin master:gh-pages --force
 
 echo "Done! Now run: ./deploy.sh"

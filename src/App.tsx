@@ -1,12 +1,12 @@
   import { HashRouter, Route, Routes } from 'react-router-dom';
   import './App.css';
-  import Layout from "./pages/Layout.js";
-  import ProfilePage from "./pages/ProfilePage.js";
-  import ResumePage from "./pages/ResumePage.js";
-  import PortfolioPage from "./pages/portfolioPage/PortfolioPage.js";
+  import Layout from "./pages/Layout.tsx";
+  import ProfilePage from "./pages/ProfilePage.tsx";
+  import ResumePage from "./pages/ResumePage.tsx";
+  import PortfolioPage from "./pages/portfolioPage/PortfolioPage.tsx";
   import { ThemeProvider } from '@mui/material/styles';
   import { CssBaseline, Box } from '@mui/material';
-  import theme from './theme.js';
+  import theme from './theme.ts';
 
 
   function App() {

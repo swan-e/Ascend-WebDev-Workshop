@@ -1,11 +1,20 @@
 import { createTheme } from '@mui/material/styles';
 
+declare module '@mui/material/styles' {
+  interface Palette {
+    tertiary: Palette['primary'];
+  }
+  interface PaletteOptions {
+    tertiary?: PaletteOptions['primary'];
+  }
+}
+
 const theme = createTheme({
   palette: {
     primary: { main: '#6750A4' },
     secondary: { main: '#686868ff' },
     tertiary: {main: '#7D5260'},
-    background: {main: '#EADDFF', secondary: '#F7F2FA'},
+    background: {default: '#EADDFF', paper: '#F7F2FA'},
   },
   typography: {
     h1: {
@@ -26,10 +35,10 @@ const theme = createTheme({
     h6: {
       fontSize: 'clamp(0.5rem, 2.5vw, 3.5rem)',
     },
-    p: {
+    body1: {
       fontSize: 'clamp(0.875rem, 1.5vw, 1.25rem)',
     },
-    body1: {
+    body2: {
       fontSize: '1rem',
     },
   },

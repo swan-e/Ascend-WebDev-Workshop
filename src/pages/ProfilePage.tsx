@@ -27,7 +27,7 @@ export default function ProfilePage() {
             </Box>
             <Box maxWidth={'83%'}>
                 <Typography variant='h2' sx={{fontWeight: 'bold', color: 'primary.main'}}>What's my story?</Typography>
-                <Typography variant='p' sx={{color: 'secondary.main'}}>--Enter in your story--</Typography>
+                <Typography variant='body1' sx={{color: 'secondary.main'}}>--Enter in your story--</Typography>
             </Box>
           </Stack>
         </Box>

@@ -3,6 +3,8 @@
 param(
     [Parameter(Mandatory=$true)]
     [string]$GITHUB_USERNAME,
+
+    [Parameter(Mandatory=$true)]
     [string]$REPO_NAME
 )
 
